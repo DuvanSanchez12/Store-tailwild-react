@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.categories-title {
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.categories-slider {
+  width: 100%;
+}
+
+.custom-prev,
+.custom-next {
+  position: relative;
+  z-index: 20 !important;
+  cursor: pointer;
+}
+
+
+.categories-slider {
+  padding-bottom: 10px;
+}
+
+.categories-slider .swiper-slide {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.categories-slider .swiper-slide:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
