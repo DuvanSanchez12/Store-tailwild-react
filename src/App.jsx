@@ -3,7 +3,7 @@ import { Products } from "./components/products.jsx";
 import { Header } from "./components/header.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { IS_DEVELOPMENT } from "./config.js";
-import { useFilters } from "./hooks/useFilters.js";
+// import { useFilters } from "./hooks/useFilters.js";
 import { CartProvider } from "./context/cart.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { Home } from "./components/Home.jsx";
@@ -14,7 +14,7 @@ import { Filters } from "./components/Filters.jsx";
 function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const { filterProducts } = useFilters();
+  // const { filterProducts } = useFilters();
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=1000&skip=0")
       .then((res) => res.json())
@@ -25,7 +25,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
-  const filteredProducts = filterProducts(products);
+  // const filteredProducts = filterProducts(products);
   return (
     <CartProvider>
       <ProductModalProvider>
