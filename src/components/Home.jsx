@@ -38,7 +38,7 @@ export function Home({ products, categories }) {
                 className="swiper-slide"
                 style={{
                   background:
-                    'url("./src/assets/slider-2.jpg") center center / cover no-repeat',
+                    'url("/Store-tailwild-react/src/assets/slide-1.png") center center / cover no-repeat',
                   borderRadius: "0.5rem",
                 }}
               >
@@ -69,7 +69,7 @@ export function Home({ products, categories }) {
                 className="swiper-slide"
                 style={{
                   background:
-                    'url("./src/assets/slide-1.jpg") center center / cover no-repeat',
+                    'url("/Store-tailwild-react/src/assets/slide-2.png") center center / cover no-repeat',
                   borderRadius: "0.5rem",
                 }}
               >
