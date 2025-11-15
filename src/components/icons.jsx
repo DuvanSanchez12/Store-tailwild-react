@@ -67,31 +67,19 @@ export function ClearCartIcon() {
     </svg>
   );
 }
-// export function CartIcon () {
-//   return (
-//     <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' strokeWidth='1' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-//       <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-//       <path d='M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' />
-//       <path d='M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' />
-//       <path d='M17 17h-11v-14h-2' />
-//       <path d='M6 5l14 1l-1 7h-13' />
-//     </svg>
-//   )
-// }
 
 export function CartIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className=""
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"></path>
@@ -107,11 +95,11 @@ export function UserIcon() {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -127,11 +115,11 @@ export function HeartIcon() {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
@@ -161,11 +149,11 @@ export function LocateIcon() {
       width="16"
       height="16"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
@@ -181,11 +169,11 @@ export function AllIcons() {
       width="20"
       height="20"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
@@ -200,15 +188,14 @@ export function XIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-x text-gray-700"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M18 6l-12 12"></path>
@@ -244,16 +231,16 @@ export function CompleteStar() {
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path
         d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
-        stroke-width="0"
+        strokeWidth="0"
         fill="currentColor"
       ></path>
     </svg>
@@ -264,20 +251,19 @@ export function MediumStar() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-star-half-filled"
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path
         d="M12 1a.993 .993 0 0 1 .823 .443l.067 .116l2.852 5.781l6.38 .925c.741 .108 1.08 .94 .703 1.526l-.07 .095l-.078 .086l-4.624 4.499l1.09 6.355a1.001 1.001 0 0 1 -1.249 1.135l-.101 -.035l-.101 -.046l-5.693 -3l-5.706 3c-.105 .055 -.212 .09 -.32 .106l-.106 .01a1.003 1.003 0 0 1 -1.038 -1.06l.013 -.11l1.09 -6.355l-4.623 -4.5a1.001 1.001 0 0 1 .328 -1.647l.113 -.036l.114 -.023l6.379 -.925l2.853 -5.78a.968 .968 0 0 1 .904 -.56zm0 3.274v12.476a1 1 0 0 1 .239 .029l.115 .036l.112 .05l4.363 2.299l-.836 -4.873a1 1 0 0 1 .136 -.696l.07 -.099l.082 -.09l3.546 -3.453l-4.891 -.708a1 1 0 0 1 -.62 -.344l-.073 -.097l-.06 -.106l-2.183 -4.424z"
-        stroke-width="0"
+        strokeWidth="0"
         fill="currentColor"
       ></path>
     </svg>
@@ -288,15 +274,14 @@ export function PlusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-plus"
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      stroke-width="3"
+      strokeWidth="3"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 5l0 14"></path>
@@ -309,15 +294,14 @@ export function MinusIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-plus"
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      stroke-width="3"
+      strokeWidth="3"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M5 12l14 0"></path>
@@ -332,11 +316,11 @@ export function ShowIcon() {
       width="16"
       height="16"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -352,11 +336,11 @@ export function HeartMinusIcon() {
       width="16"
       height="16"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
@@ -368,15 +352,14 @@ export function TrashIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-trash"
       width="14"
       height="14"
       viewBox="0 0 24 24"
-      stroke-width="2"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M4 7l16 0"></path>
@@ -384,71 +367,6 @@ export function TrashIcon() {
       <path d="M14 11l0 6"></path>
       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-    </svg>
-  );
-}
-
-export function FlagColombia() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <rect width="23" height="8" fill="#FCD116" />
-      <rect y="8" width="23" height="6" fill="#003893" />
-      <rect y="14" width="23" height="6" fill="#CE1126" />
-    </svg>
-  );
-}
-export function FlagMexico() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect width="8" height="24" fill="#006847" />
-      <rect x="8" width="8" height="24" fill="#FFFFFF" />
-      <rect x="16" width="8" height="24" fill="#CE1126" />
-      <circle cx="12" cy="12" r="2" fill="#A67C00" />
-    </svg>
-  );
-}
-
-export function FlagArgentina() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect width="24" height="8" fill="#74ACDF" />
-      <rect y="8" width="24" height="8" fill="#FFFFFF" />
-      <rect y="16" width="24" height="8" fill="#74ACDF" />
-      <circle cx="12" cy="12" r="2" fill="#F6B40E" />
-    </svg>
-  );
-}
-export function FlagUSA() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect width="24" height="24" fill="#B22234" />
-      <rect width="24" height="2" y="2" fill="#FFFFFF" />
-      <rect width="24" height="2" y="6" fill="#FFFFFF" />
-      <rect width="24" height="2" y="10" fill="#FFFFFF" />
-      <rect width="10" height="10" fill="#3C3B6E" />
-    </svg>
-  );
-}
-
-export function FlagSpain() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect width="24" height="6" fill="#AA151B" />
-      <rect y="6" width="24" height="12" fill="#F1BF00" />
-      <rect y="18" width="24" height="6" fill="#AA151B" />
-    </svg>
-  );
-}
-export function FlagChile() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <rect width="12" height="12" fill="#0039A6" />
-      <polygon
-        points="6,4 7,7 10,7 7.5,8.5 8.5,11 6,9.2 3.5,11 4.5,8.5 2,7 5,7"
-        fill="#FFFFFF"
-      />
-      <rect x="12" width="12" height="12" fill="#FFFFFF" />
-      <rect y="12" width="24" height="12" fill="#D52B1E" />
     </svg>
   );
 }

@@ -1,11 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import "./products.css";
-import { useStars } from "../hooks/Start.jsx";
-import { HeartMinusIcon, MinusIcon, PlusIcon, ShowIcon } from "./icons.jsx";
+import "./Products.css";
+import {
+  HeartMinusIcon,
+  MinusIcon,
+  PlusIcon,
+  ShowIcon,
+} from "../components/icons.jsx";
 import { useCart } from "../hooks/useCart.js";
+import { useOutletContext } from "react-router-dom";
+import { useFilters } from "../hooks/useFilters.js";
+import { useStars } from "../hooks/Start.jsx";
 import { useProductModal } from "../context/modal.jsx";
 
-export function Products({ products }) {
+export default function Products() {
+  const { products } = useOutletContext();
+  const { filterProducts } = useFilters();
+  const filteredProducts = filterProducts(products);
   const { addToCart, RemoveFromCart, cart } = useCart();
   const { openModal } = useProductModal();
 
@@ -22,7 +32,7 @@ export function Products({ products }) {
       </div>
 
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:gap-4 xl:grid-cols-5">
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           const isProductInCart = checkProductInCart(product);
           const stars = useStars(Number(product.rating));
 
@@ -42,8 +52,6 @@ export function Products({ products }) {
                     className="w-auto mx-auto h-60 pb-8"
                     alt={product.title}
                   />
-
-                  {/* 🔹 Botones al hacer hover */}
                   <div className="absolute w-full bottom-[15%] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex justify-center gap-2">
                     <button
                       onClick={() => openModal(product)}
@@ -79,22 +87,39 @@ export function Products({ products }) {
                   </span>
 
                   <button
+                    disabled={product.stock === 0}
                     className={`inline-flex cursor-pointer items-center px-2 p-1 gap-x-1 border small rounded-md font-bold fontMain focus:outline-none focus:ring-4 transition 
-                      ${
-                        isProductInCart
-                          ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
-                          : "btn-color text-white border-green-600 focus:ring-green-300"
-                      }`}
+                    ${
+                      product.stock === 0
+                        ? "bg-gray-300 border-gray-300 text-gray-500 cursor-not-allowed"
+                        : isProductInCart
+                        ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
+                        : "btn-color text-white border-green-600 focus:ring-green-300"
+                    }`}
                     onClick={(e) => {
+                      if (product.stock === 0) return;
+
                       e.stopPropagation();
                       e.preventDefault();
+
                       isProductInCart
                         ? RemoveFromCart(product)
                         : addToCart(product);
                     }}
                   >
-                    {isProductInCart ? <MinusIcon /> : <PlusIcon />}
-                    <span>{isProductInCart ? "Quitar" : "Agregar"}</span>
+                    {product.stock === 0 ? (
+                      <span>Agotado</span>
+                    ) : isProductInCart ? (
+                      <>
+                        <MinusIcon />
+                        <span>Quitar</span>
+                      </>
+                    ) : (
+                      <>
+                        <PlusIcon />
+                        <span>Agregar</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>

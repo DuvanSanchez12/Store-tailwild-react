@@ -2,7 +2,6 @@
   background: #bec0c2 !important;
   opacity: 1 !important;
 }
-
 .swiper-pagination-bullet-active {
   background: #22a316 !important;
 }
@@ -15,4 +14,13 @@
   background: url(../assets/baner-2.jpg) no-repeat;
   background-size: cover;
   background-position: center;
+}
+.slide1{
+  background: url(../assets/slide-2.jpg) center center / cover no-repeat;
+  border-radius: 0.5rem;
+}
+
+.slide2{
+  background: url(../assets/slide-1.jpg) center center / cover no-repeat;
+  border-radius: 0.5rem;
 }

@@ -1,46 +1,116 @@
-import { useId } from 'react'
-import './Filters.css'
-import { useFilters } from '../hooks/useFilters'
+import { useEffect, useState } from "react";
+import { useOutletContext, useSearchParams } from "react-router-dom";
+import { useFilters } from "../hooks/useFilters";
+import { useCategory } from "../context/category.jsx";
+import { CATEGORY } from "../components/Consts.js";
 
 export function Filters() {
-    const { filters, setFilters } = useFilters()
-    const minPriceFilterId = useId()
-    const categoryFilterId = useId()
-    const handleChangeMinPrice = (event) => {
-        setFilters(prevState => ({
-            ...prevState,
-            minPrice: event.target.value
-        }))
+  const { products } = useOutletContext();
+  const { setFilters } = useFilters();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { selectedCategory, selectedSlug, setSelectedSlug, setSelectedCategory } = useCategory();
+  const [slugs, setSlugs] = useState([]);
+    useEffect(() => {
+    const urlSlug = searchParams.get("categories");
+
+    if (!urlSlug) return;
+
+    // Encontrar categoría a la que pertenece este slug
+    for (const category in CATEGORY) {
+        if (CATEGORY[category].includes(urlSlug)) {
+        setSelectedCategory(category);
+        setSelectedSlug(urlSlug);
+        break;
+        }
     }
-    const handleChangeCategory = (event) => {
-        setFilters(prevState => ({
-            ...prevState,
-            category: event.target.value
-        }))
+    }, [searchParams, setSelectedCategory, setSelectedSlug]);
+
+  useEffect(() => {
+    if (!selectedCategory) {
+      setSlugs([]);
+      return;
     }
-    return (
-        <section className="filters">
-            <div>
-                <label htmlFor="price">Precio</label>
-                <input
-                  type="range"
-                  id={minPriceFilterId}
-                  min='0.0'
-                  max='1000.0'
-                  onChange={handleChangeMinPrice}
-                  value={filters.minPrice}
-                />
-                <span>${filters.minPrice}</span>
-            </div>
-            <div>
-                <label htmlFor="category">Categoria</label>
-                <select id={categoryFilterId} onChange={handleChangeCategory}>
-                    <option value="all">Todas</option>
-                    <option value="smartphones">Celulares</option>
-                    <option value="laptops">Portátiles</option>
-                </select>
-            </div>
-        </section>
-    )
-    
+
+    const slugList = CATEGORY[selectedCategory];
+
+    if (Array.isArray(slugList)) {
+      setSlugs(slugList);
+    } else {
+      setSlugs([]);
+    }
+  }, [selectedCategory]);
+
+  const handleSlugClick = (slug) => {
+    const updated = selectedSlug === slug ? "" : slug;
+
+    setSelectedSlug(updated);
+    setFilters((prev) => ({
+      ...prev,
+      categories: updated ? [updated] : [],
+    }));
+
+    if (updated) searchParams.set("", updated);
+    else searchParams.delete("");
+
+    setSearchParams(searchParams);
+  };
+
+  return (
+    <section className="container mx-auto mt-8 mb-4 px-4">
+      <h2 className="font-bold fontMain text-center text-2xl mb-4">
+        {selectedCategory
+          ? selectedCategory.replace(/_/g, " ")
+          : "Selecciona una categoría arriba"}
+      </h2>
+
+      {/* CONTENEDOR 100% CENTRADO */}
+      <div className="flex justify-center mt-6">
+        <div
+          className="grid justify-center gap-6"
+          style={{
+            gridTemplateColumns: "repeat(auto-fit, minmax(70px, 1fr))",
+            maxWidth: "1000px",
+          }}
+        >
+          {slugs.map((slug) => {
+            const productImage = products.find((c) => c.category === slug);
+            const isSelected = selectedSlug === slug;
+
+            return (
+              <button
+                key={slug}
+                onClick={() => handleSlugClick(slug)}
+                className="flex flex-col cursor-pointer items-center"
+              >
+                <div
+                  className={`w-20 h-20 rounded-full border-2 overflow-hidden shadow transition
+                  ${
+                    isSelected
+                      ? "border-green-600 scale-105"
+                      : "border-gray-300"
+                  }
+                `}
+                >
+                  <img
+                    src={
+                      productImage
+                        ? productImage.thumbnail
+                        : "https://via.placeholder.com/150"
+                    }
+                    className="w-full h-full bg-gray-200 object-cover"
+                    alt={slug}
+                  />
+                </div>
+
+                <span className="mt-2 capitalize text-sm font-medium text-gray-700">
+                  {slug.replace("-", " ")}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }

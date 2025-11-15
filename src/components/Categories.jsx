@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./categories.css";
+import { useNavigate } from "react-router-dom";
+import { useCategory } from "../context/category.jsx";
 
 export function Categories({ categories, products }) {
+  const { setSelectedCategory, setAllCategories } = useCategory();
+  const navigate = useNavigate();
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+
+  useEffect(() => {
+    if (categories?.length > 0) {
+      setAllCategories(categories.map((cat) => cat.slug));
+    }
+  }, [categories, setAllCategories]);
+
+  const handleCategoryClick = (slug) => {
+    setSelectedCategory(slug);
+    navigate("/products");
+  };
   return (
     <section className="categories-section container mx-auto pt-7">
       <div className="flex items-center justify-between mb-3">
@@ -68,8 +83,9 @@ export function Categories({ categories, products }) {
           );
           return (
             <SwiperSlide key={category.slug}>
-              <button
-                className="w-full"
+              <div
+                onClick={() => handleCategoryClick(category.slug)}
+                className="cursor-pointer w-full"
               >
                 <div className="wrap-break-word cursor-pointer mt-1 rounded-lg border border-gray-300 transition duration-75 hover:transition hover:duration-500 ease-in-out hover:shadow-md hover:border-green-600">
                   <img
@@ -85,7 +101,7 @@ export function Categories({ categories, products }) {
                     {category.name}
                   </p>
                 </div>
-              </button>
+              </div>
             </SwiperSlide>
           );
         })}

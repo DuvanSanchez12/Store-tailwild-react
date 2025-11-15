@@ -1,9 +1,4 @@
-import {
-  ArrowIcon,
-  CartIcon,
-  TrashIcon,
-  XIcon,
-} from "./icons.jsx";
+import { ArrowIcon, CartIcon, TrashIcon, XIcon } from "./icons.jsx";
 import "./Cart.css";
 import { useCart } from "../hooks/useCart.js";
 import { QuantitySelector } from "./Quantity.jsx";
@@ -17,7 +12,7 @@ function CartItem({
   title,
   tags,
   product,
-  RemoveFromCart
+  RemoveFromCart,
 }) {
   const quantity = product.quantity || 1;
   const totalProduct = (price - price * (discountPercentage / 100)) * quantity;
@@ -46,9 +41,12 @@ function CartItem({
                   : tags}
               </small>
               <div className="mt-2 small rounded-lg border-gray-300 border-2 leading-none inline-flex hover:bg-gray-200">
-                <a onClick={() => RemoveFromCart(product)} className="text-green-600 cursor-pointer flex items-center">
+                <a
+                  onClick={() => RemoveFromCart(product)}
+                  className="text-green-600 cursor-pointer flex items-center"
+                >
                   <span className="mr-1 ms-2 align-text-bottom">
-                    <TrashIcon className="mr-1"/>
+                    <TrashIcon className="mr-1" />
                   </span>
                   <span className="text-gray-500 mr-2 text-sm">Remove</span>
                 </a>
@@ -91,38 +89,39 @@ export function Cart() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-return (
-  <div>
-    <button
-      onClick={openCart}
-      className="relative cursor-pointer text-gray-500 hover:text-green-600"
-    >
-      <CartIcon />
-      <span className="absolute top-0 -mt-1 left-full rounded-full h-5 w-5 -ml-2 bg-green-600 text-white text-center font-semibold text-sm">
-        {cart?.length || 0}
-      </span>
-    </button>
-    {isOpen && (
-      <div
-        className="fixed inset-0 bg-[rgba(0,0,0,0.26)] backdrop-blur-xs z-[9998] transition-opacity duration-300"
-        onClick={closeCart}
-      ></div>
-    )}
-    <div
-      className={`cart offcanvas offcanvas-right transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
-    >
-      <div className="offcanvas-header border-b">
-        <div>
-          <h5 className="text-gray-900 text-xl fontMain">Carrito de compras</h5>
-          <span className="text-gray-600 font-normal">Localizado en Colombia</span>
+  return (
+    <div>
+      <button
+        onClick={openCart}
+        className="relative cursor-pointer text-gray-500 hover:text-green-600"
+      >
+        <CartIcon />
+        <span className="absolute top-0 -mt-1 left-full rounded-full h-5 w-5 -ml-2 bg-green-600 text-white text-center font-semibold text-sm">
+          {cart?.length || 0}
+        </span>
+      </button>
+      {isOpen && (
+        <div
+          className={`cart-backdrop ${isOpen ? "show" : ""}`}
+          onClick={closeCart}
+        ></div>
+      )}
+
+      <div className={`cart offcanvas ${isOpen ? "open" : ""}`}>
+        <div className="offcanvas-header border-b">
+          <div>
+            <h5 className="text-gray-900 text-xl fontMain">
+              Carrito de compras
+            </h5>
+            <span className="text-gray-600 font-normal">
+              Localizado en Colombia
+            </span>
+          </div>
+          <button onClick={closeCart} className="cursor-pointer">
+            <XIcon />
+          </button>
         </div>
-        <button onClick={closeCart} className="cursor-pointer">
-          <XIcon />
-        </button>
-      </div>
-      <div className="offcanvas-body p-4">
+        <div className="offcanvas-body p-4">
           <ul className="border-b">
             {cart.map((product) => (
               <CartItem

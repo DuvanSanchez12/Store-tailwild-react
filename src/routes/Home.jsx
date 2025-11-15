@@ -1,17 +1,17 @@
 import "./Home.css";
 import { useEffect } from "react";
-import Swiper from "swiper";
-import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
-import { initializeSwiperCarousels } from "../hooks/sliders";
+import { initializeSwiperCarousels } from "../hooks/sliders.js";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { PopularProducts } from "./PopularProducts.jsx";
-import { ArrowIcon } from "./icons";
-import { Categories } from "./Categories.jsx";
+import { PopularProducts } from "../components/PopularProducts.jsx";
+import { ArrowIcon } from "../components/icons.jsx";
+import { Categories } from "../components/Categories.jsx";
+import { useOutletContext } from "react-router-dom";
 
-export function Home({ products, categories }) {
+export default function Home() {
+  const { products, categories } = useOutletContext()
   useEffect(() => {
     initializeSwiperCarousels();
   }, []);
@@ -33,15 +33,8 @@ export function Home({ products, categories }) {
             data-effect="fade"
             data-breakpoints='{"480":{"slidesPerView":1},"768":{"slidesPerView":1},"1024":{"slidesPerView":1}}'
           >
-            <div className="swiper-wrapper pb-8">
-              <div
-                className="swiper-slide"
-                style={{
-                  background:
-                    'url("/Store-tailwild-react/src/assets/slide-1.png") center center / cover no-repeat',
-                  borderRadius: "0.5rem",
-                }}
-              >
+            <div className="swiper-wrapper">
+              <div className="swiper-slide slide1">
                 <div className="lg:py-32 p-12 lg:pl-12 xl:w-2/5 md:w-3/5">
                   <span className="inline-block p-2 text-sm rounded-lg bg-yellow-500 text-gray-900 font-semibold">
                     ¡Gran Descuento de Apertura: 50%!
@@ -52,8 +45,7 @@ export function Home({ products, categories }) {
                       Supermercado de Productos Frescos
                     </h1>
                     <p className="text-md font-light">
-                      Productos frescos seleccionados con los más altos
-                      estándares de calidad.
+                      Productos frescos seleccionados.
                     </p>
                   </div>
                   <a
@@ -65,14 +57,7 @@ export function Home({ products, categories }) {
                   </a>
                 </div>
               </div>
-              <div
-                className="swiper-slide"
-                style={{
-                  background:
-                    'url("/Store-tailwild-react/src/assets/slide-2.png") center center / cover no-repeat',
-                  borderRadius: "0.5rem",
-                }}
-              >
+              <div className="swiper-slide slide2">
                 <div className="lg:py-32 lg:pl-12 lg:pr-6 px-12 py-12 xl:w-2/5 md:w-3/5">
                   <span className="inline-block p-2 text-sm rounded-lg bg-yellow-500 text-gray-900 font-semibold">
                     Envío Gratis desde $100
@@ -96,7 +81,7 @@ export function Home({ products, categories }) {
                 </div>
               </div>
             </div>
-            <div className="swiper-pagination !bottom-14"></div>
+            <div className="swiper-pagination bottom-14!"></div>
             <div className="swiper-navigation swiper-navigation-hidden">
               <div className="swiper-button-next"></div>
               <div className="swiper-button-prev"></div>
@@ -115,7 +100,9 @@ export function Home({ products, categories }) {
                     <h2 className="fontMain text-xl">Frutas y Vegetales</h2>
                     <p>
                       Obtén hasta
-                      <span className="fontMain font-medium text-red-600 px-1">30%</span>
+                      <span className="fontMain font-medium text-red-600 px-1">
+                        30%
+                      </span>
                       de descuento
                     </p>
                   </div>
@@ -137,8 +124,10 @@ export function Home({ products, categories }) {
                   <div className="flex flex-col gap-1">
                     <h2 className="text-xl fontMain">Freshly Baked Buns</h2>
                     <p>
-                       Obtén hasta 
-                      <span className="fontMain font-medium text-red-600 px-1">25%</span>
+                      Obtén hasta
+                      <span className="fontMain font-medium text-red-600 px-1">
+                        25%
+                      </span>
                       de descuento
                     </p>
                   </div>

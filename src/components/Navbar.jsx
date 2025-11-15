@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { useFilters } from "../hooks/useFilters.js";
 import { Cart } from "./cart.jsx";
 import {
   HeartIcon,
@@ -7,8 +9,22 @@ import {
   AllIcons,
 } from "./icons.jsx";
 import "./Navbar.css";
+import { CATEGORY } from "./Consts.js";
+import { useCategory } from "../context/category.jsx";
 
 export function Navbar() {
+  const { setFilters } = useFilters();
+  const navigate = useNavigate();
+  const { setSelectedCategory } = useCategory();
+  const handleCategoryClick = (slugArray, name) => {
+    setSelectedCategory(name);
+    setFilters((prev) => ({
+      ...prev,
+      categories: slugArray,
+    }));
+
+    navigate(`/products?category=${name}`);
+  };
   return (
     <header className="antialiased text-gray-200 border-b">
       <div className="bg-gray-100 py-1  ">
@@ -24,7 +40,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center">
-              <img src="https://media.licdn.com/dms/image/v2/D4E03AQHy-t3HJpuifg/profile-displayphoto-shrink_200_200/B4EZZhloUTHYAY-/0/1745393977878?e=2147483647&v=beta&t=0jiJgGriQ_7u5MXntOy9l8Cv-pFo9p9uB-8jvv_BP4k" alt="" className="perfil" />
+              <img src="/src/assets/foto.jpg" alt="" className="perfil" />
               <h1 className="font-semibold text-black text-2xl">DuvanShop</h1>
             </a>
           </div>
@@ -95,7 +111,6 @@ export function Navbar() {
               </a>
             </button>
             <Cart />
-
           </div>
         </div>
         <div className="hidden lg:flex items-center gap-8 mt-4 font-medium text-gray-700">
@@ -133,17 +148,56 @@ export function Navbar() {
               </ul>
             </div>
           </div>
-          <a href="#" className="hover:text-green-600">
+          <a href="/" className="hover:text-green-600">
             Inicio
           </a>
-          <a href="#" className="hover:text-green-600 flex items-center gap-1">
-            Ropa
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Ropa_y_moda,"Ropa_y_moda")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Ropa y moda
           </a>
-          <a href="#" className="hover:text-green-600">
-            Tecnologia
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Tecnología,"Tecnología")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Tecnología
           </a>
-          <a href="#" className="hover:text-green-600">
-            Muebles
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Belleza_y_cuidado_personal,"Belleza_y_cuidado_personal")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Belleza y cuidado personal
+          </a>
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Hogar_y_decoración,"Hogar_y_decoración")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Hogar y decoración
+          </a>
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Supermercado,"Supermercado")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Supermercado
+          </a>
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Deportes,"Deportes")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Deportes
+          </a>
+
+          <a
+            onClick={() => handleCategoryClick(CATEGORY.Vehículos,"Vehículos")}
+            className="hover:text-green-600 cursor-pointer"
+          >
+            Vehículos
           </a>
         </div>
       </nav>

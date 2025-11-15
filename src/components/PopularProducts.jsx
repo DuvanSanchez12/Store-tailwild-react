@@ -3,13 +3,12 @@ import { useStars } from "../hooks/Start.jsx";
 import { HeartMinusIcon, MinusIcon, PlusIcon, ShowIcon } from "./icons.jsx";
 import { useCart } from "../hooks/useCart.js";
 import { useProductModal } from "../context/modal.jsx";
+import { useOutletContext } from "react-router-dom";
 
-
-
-
-export function PopularProducts({ products }) {
+export function PopularProducts() {
+  const { products } = useOutletContext()
   const { addToCart, RemoveFromCart, cart } = useCart();
-  const {openModal} =useProductModal();
+  const {openModal} = useProductModal();
   const checkProductInCart = (product) => {
     return cart.some((item) => item.id === product.id);
   };
@@ -79,23 +78,40 @@ export function PopularProducts({ products }) {
                   </div>
                   <div>
                     <button
-                      className={`inline-flex cursor-pointer items-center px-2 p-1 gap-x-1 border small rounded-md font-bold fontMain focus:outline-none focus:ring-4 transition 
+                    disabled={product.stock === 0}
+                    className={`inline-flex cursor-pointer items-center px-2 p-1 gap-x-1 border small rounded-md font-bold fontMain focus:outline-none focus:ring-4 transition 
                     ${
-                      isProductInCart
+                      product.stock === 0
+                        ? "bg-gray-300 border-gray-300 text-gray-500 cursor-not-allowed"
+                        : isProductInCart
                         ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
                         : "btn-color text-white border-green-600 focus:ring-green-300"
                     }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        isProductInCart
-                          ? RemoveFromCart(product)
-                          : addToCart(product);
-                      }}
-                    >
-                      {isProductInCart ? <MinusIcon /> : <PlusIcon />}
-                      <span>{isProductInCart ? "Quitar" : "Agregar"}</span>
-                    </button>
+                    onClick={(e) => {
+                      if (product.stock === 0) return; // evita agregar agostado
+
+                      e.stopPropagation();
+                      e.preventDefault();
+
+                      isProductInCart
+                        ? RemoveFromCart(product)
+                        : addToCart(product);
+                    }}
+                  >
+                    {product.stock === 0 ? (
+                      <span>Agotado</span>
+                    ) : isProductInCart ? (
+                      <>
+                        <MinusIcon />
+                        <span>Quitar</span>
+                      </>
+                    ) : (
+                      <>
+                        <PlusIcon />
+                        <span>Agregar</span>
+                      </>
+                    )}
+                  </button>
                   </div>
                 </div>
               </div>

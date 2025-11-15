@@ -5,11 +5,14 @@ export function useFilters() {
   const { filters, setFilters } = useContext(FiltersContext);
 
   const filterProducts = (products) => {
+    const { minPrice, categories = [] } = filters;
+
     return products.filter((product) => {
-      return (
-        product.price >= filters.minPrice &&
-        (filters.category == "all" || product.category == filters.category)
-      );
+      const matchPrice = product.price >= minPrice;
+      const matchCategory =
+        categories.length === 0 || categories.includes(product.category);
+
+      return matchPrice && matchCategory;
     });
   };
 

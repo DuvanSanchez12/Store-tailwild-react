@@ -1,11 +1,12 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState } from "react";
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const FiltersContext = createContext();
 
 export function FiltersProvider({ children }) {
   const [filters, setFilters] = useState({
-    category: "all",
+    categories: [],
     minPrice: 0,
   });
 
