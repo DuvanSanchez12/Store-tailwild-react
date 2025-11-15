@@ -42,7 +42,7 @@ export default function Products() {
                 <div className="text-center relative flex justify-center group">
                   {/* 🔹 Etiqueta de descuento */}
                   <div className="absolute top-0 left-0">
-                    <span className="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-green-600 text-white">
+                    <span className="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-[rgb(10,173,10)] text-white">
                       {Number(product.discountPercentage || 0).toFixed(0)}%
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function Products() {
                         ? "bg-gray-300 border-gray-300 text-gray-500 cursor-not-allowed"
                         : isProductInCart
                         ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
-                        : "btn-color text-white border-green-600 focus:ring-green-300"
+                        : "bg-[rgb(10,173,10)] text-white border-[rgb(10,173,10)] hover:text-white hover:bg-[rgb(0,140,0)] hover:border-[rgb(0,140,0)] focus:ring-green-300"
                     }`}
                     onClick={(e) => {
                       if (product.stock === 0) return;

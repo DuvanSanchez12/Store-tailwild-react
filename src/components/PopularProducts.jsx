@@ -18,7 +18,7 @@ export function PopularProducts() {
   return (
     <section className="container mx-auto pt-7">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="products-title font-bold text-2xl text-gray-800">
+        <h2 className="fontMain font-bold text-2xl text-gray-800 pb-2">
           Top productos del momento
         </h2>
       </div>
@@ -32,7 +32,7 @@ export function PopularProducts() {
               <div className="mt-1 flex-auto p-4 rounded-lg border border-gray-300 hover:-translate-y-1 transition duration-75 hover:transition hover:duration-500 ease-in-out hover:shadow-md hover:border-green-600">
                 <div className="text-center relative flex justify-center group">
                   <div className="absolute top-0 left-0">
-                    <span className="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-green-600 text-white">
+                    <span className="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-[rgb(10,173,10)] text-white">
                       {Number(product.discountPercentage).toFixed(0)}%
                     </span>
                   </div>
@@ -79,13 +79,13 @@ export function PopularProducts() {
                   <div>
                     <button
                     disabled={product.stock === 0}
-                    className={`inline-flex cursor-pointer items-center px-2 p-1 gap-x-1 border small rounded-md font-bold fontMain focus:outline-none focus:ring-4 transition 
+                    className={`inline-flex cursor-pointer items-center px-2 p-1 gap-x-1 border small rounded-md font-bold fontMain focus:outline-none focus:ring-4 transition  disabled:opacity-50 disabled:pointer-events-none 
                     ${
                       product.stock === 0
                         ? "bg-gray-300 border-gray-300 text-gray-500 cursor-not-allowed"
                         : isProductInCart
                         ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
-                        : "btn-color text-white border-green-600 focus:ring-green-300"
+                        : "bg-[rgb(10,173,10)] text-white border-green-600 focus:ring-green-300 hover:text-white hover:bg-[rgb(0,140,0)] hover:border-[rgb(0,140,0)]"
                     }`}
                     onClick={(e) => {
                       if (product.stock === 0) return; // evita agregar agostado

@@ -4,9 +4,15 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
-.content-wrapper {
-  max-width: 1050px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem 0;
+
+.fontMain{
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.text-base{
+    font-size: 0.975rem;
+}
+.small{
+    font-size: 0.75rem;
 }

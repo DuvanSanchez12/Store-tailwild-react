@@ -87,7 +87,7 @@ export function Filters() {
                   className={`w-20 h-20 rounded-full border-2 overflow-hidden shadow transition
                   ${
                     isSelected
-                      ? "border-green-600 scale-105"
+                      ? "border-[rgb(10,173,10)] scale-105"
                       : "border-gray-300"
                   }
                 `}

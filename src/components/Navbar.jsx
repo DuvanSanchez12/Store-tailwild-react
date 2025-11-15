@@ -8,7 +8,7 @@ import {
   LocateIcon,
   AllIcons,
 } from "./icons.jsx";
-import "./Navbar.css";
+import "../index.css";
 import { CATEGORY } from "./Consts.js";
 import { useCategory } from "../context/category.jsx";
 
@@ -40,7 +40,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center">
-              <img src="/src/assets/foto.jpg" alt="" className="perfil" />
+              <img src="/src/assets/foto.jpg" alt="" className="w-[45px] h-[45px] rounded-full object-cover mr-2 border border-white/20" />
               <h1 className="font-semibold text-black text-2xl">DuvanShop</h1>
             </a>
           </div>
@@ -117,7 +117,7 @@ export function Navbar() {
           <div className="relative group">
             <a
               href="#!"
-              className="hidden lg:flex items-center px-4 gap-2 py-2 btn-color text-white font-medium border rounded-lg border-green-600 active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition"
+              className="hidden lg:flex items-center px-4 gap-2 py-2 bg-[rgb(10,173,10)] text-white font-medium border rounded-lg border-green-600 active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition hover:text-white hover:bg-[rgb(0,140,0)] hover:border-[rgb(0,140,0)] disabled:opacity-50 disabled:pointer-events-none"
             >
               <AllIcons />
               Categorías

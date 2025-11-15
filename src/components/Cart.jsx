@@ -96,7 +96,7 @@ export function Cart() {
         className="relative cursor-pointer text-gray-500 hover:text-green-600"
       >
         <CartIcon />
-        <span className="absolute top-0 -mt-1 left-full rounded-full h-5 w-5 -ml-2 bg-green-600 text-white text-center font-semibold text-sm">
+        <span className="absolute top-0 -mt-1 left-full rounded-full h-5 w-5 -ml-2 bg-[rgb(10,173,10)] text-white text-center font-semibold text-sm">
           {cart?.length || 0}
         </span>
       </button>

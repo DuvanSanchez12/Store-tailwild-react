@@ -8,6 +8,7 @@ import {
   AllIcons,
   HeartIcon,
 } from "./icons.jsx";
+import "../index.css"
 import { useStars } from "../hooks/Start.jsx";
 import { QuantitySelector } from "./Quantity.jsx";
 import { useCart } from "../hooks/useCart.js";
@@ -95,13 +96,13 @@ export default function ProductModal() {
             <div className="flex hover:text-black gap-3 mt-6">
               <button
                 disabled={product.stock === 0}
-                className={`inline-flex items-center px-4 gap-2 py-2 border-2 rounded-lg font-medium fontMain transition
+                className={`inline-flex cursor-pointer items-center px-4 gap-2 py-2 border-2 rounded-lg font-medium fontMain transition
                 ${
                   product.stock === 0
                     ? "bg-gray-300 border-gray-300 text-gray-500 cursor-not-allowed"
                     : isProductInCart
                     ? "bg-red-600 border-red-600 text-white hover:bg-red-700 focus:ring-red-300"
-                    : "border-gray-300 text-gray-500 hover:border-green-600 hover:text-white hover:bg-green-600 focus:ring-green-300"
+                    : "border-gray-300 text-gray-500 hover:text-white hover:bg-[rgb(10,173,10)] hover:border-[rgb(10,173,10)] focus:ring-green-300"
                 }`}
                 onClick={() => {
                   if (product.stock === 0) return;

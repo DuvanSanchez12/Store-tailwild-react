@@ -25,28 +25,32 @@ export function Categories({ categories, products }) {
     navigate("/products");
   };
   return (
-    <section className="categories-section container mx-auto pt-7">
+    <section className="container mx-auto pt-7">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="categories-title font-bold text-2xl text-gray-800">
+        <h2 className="fontMain font-bold text-2xl text-gray-800 pb-2">
           Explora nuestras categorías
         </h2>
         <div className="flex items-center gap-3">
           <button
-            className={`custom-prev p-2 rounded-full border transition ${
-              isBeginning
-                ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                : "border-gray-300 text-green-600 hover:bg-green-600 hover:text-white"
-            }`}
+            className={`custom-prev relative z-20 p-2 rounded-full border transition
+              ${
+                isBeginning
+                  ? "border-gray-300 text-gray-400 cursor-not-allowed"
+                  : "border-gray-300 text-green-600 hover:bg-green-600 hover:text-white"
+              }
+            `}
             aria-label="Anterior"
           >
             <ChevronLeft size={20} />
           </button>
           <button
-            className={`custom-next p-2 rounded-full border transition ${
-              isEnd
-                ? "border-gray-300 text-gray-400 cursor-not-allowed"
-                : "border-gray-300 text-green-600 hover:bg-green-600 hover:text-white"
-            }`}
+            className={`custom-next relative z-20 p-2 rounded-full border transition
+              ${
+                isEnd
+                  ? "border-gray-300 text-gray-400 cursor-not-allowed"
+                  : "border-gray-300 text-green-600 hover:bg-green-600 hover:text-white"
+              }
+            `}
             aria-label="Siguiente"
           >
             <ChevronRight size={20} />
@@ -67,7 +71,7 @@ export function Categories({ categories, products }) {
           768: { slidesPerView: 4 },
           1024: { slidesPerView: 6 },
         }}
-        className="categories-slider overflow-visible"
+        className="w-full pb-2.5 overflow-visible"
         onSlideChange={(swiper) => {
           setIsBeginning(swiper.isBeginning);
           setIsEnd(swiper.isEnd);
@@ -87,7 +91,13 @@ export function Categories({ categories, products }) {
                 onClick={() => handleCategoryClick(category.slug)}
                 className="cursor-pointer w-full"
               >
-                <div className="wrap-break-word cursor-pointer mt-1 rounded-lg border border-gray-300 transition duration-75 hover:transition hover:duration-500 ease-in-out hover:shadow-md hover:border-green-600">
+                <div className="
+                    mt-1 rounded-lg border border-gray-300 
+                    transition-all duration-200 ease-in-out 
+                    hover:border-green-600 
+                    hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]
+                    hover:-translate-y-px
+                  ">
                   <img
                     src={
                       productInCategory
