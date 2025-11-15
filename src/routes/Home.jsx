@@ -33,8 +33,15 @@ export default function Home() {
             data-effect="fade"
             data-breakpoints='{"480":{"slidesPerView":1},"768":{"slidesPerView":1},"1024":{"slidesPerView":1}}'
           >
-            <div className="swiper-wrapper">
-              <div className="swiper-slide slide1">
+            <div className="swiper-wrapper pb-8">
+              <div
+                className="swiper-slide"
+                style={{
+                  background:
+                    'url("/Store-tailwild-react/src/assets/slide-1.png") center center / cover no-repeat',
+                  borderRadius: "0.5rem",
+                }}
+              >
                 <div className="lg:py-32 p-12 lg:pl-12 xl:w-2/5 md:w-3/5">
                   <span className="inline-block p-2 text-sm rounded-lg bg-yellow-500 text-gray-900 font-semibold">
                     ¡Gran Descuento de Apertura: 50%!
@@ -57,7 +64,14 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="swiper-slide slide2">
+              <div
+                className="swiper-slide"
+                style={{
+                  background:
+                    'url("/Store-tailwild-react/src/assets/slide-2.png") center center / cover no-repeat',
+                  borderRadius: "0.5rem",
+                }}
+              >
                 <div className="lg:py-32 lg:pl-12 lg:pr-6 px-12 py-12 xl:w-2/5 md:w-3/5">
                   <span className="inline-block p-2 text-sm rounded-lg bg-yellow-500 text-gray-900 font-semibold">
                     Envío Gratis desde $100

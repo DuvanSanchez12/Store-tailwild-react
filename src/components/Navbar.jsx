@@ -40,7 +40,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center">
-              <img src="/src/assets/foto.jpg" alt="" className="perfil" />
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQHy-t3HJpuifg/profile-displayphoto-shrink_200_200/B4EZZhloUTHYAY-/0/1745393977878?e=2147483647&v=beta&t=0jiJgGriQ_7u5MXntOy9l8Cv-pFo9p9uB-8jvv_BP4k" alt="" className="perfil" />
               <h1 className="font-semibold text-black text-2xl">DuvanShop</h1>
             </a>
           </div>
