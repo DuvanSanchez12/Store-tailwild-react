@@ -3,9 +3,6 @@ import { useState } from "react";
 import {
   XIcon,
   CartIcon,
-  SearchIcon,
-  LocateIcon,
-  AllIcons,
   HeartIcon,
 } from "./icons.jsx";
 import "../index.css"

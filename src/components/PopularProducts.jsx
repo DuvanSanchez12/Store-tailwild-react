@@ -1,4 +1,3 @@
-import "./PopularProducts.css";
 import { useStars } from "../hooks/Start.jsx";
 import { HeartMinusIcon, MinusIcon, PlusIcon, ShowIcon } from "./icons.jsx";
 import { useCart } from "../hooks/useCart.js";
@@ -70,9 +69,9 @@ export function PopularProducts() {
                     {product.reviews?.length})
                   </span>
                 </div>
-                <div class="flex justify-between items-center">
+                <div className="flex justify-between items-center">
                   <div>
-                    <span class="text-gray-900 font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       ${product.price}
                     </span>
                   </div>
@@ -88,7 +87,7 @@ export function PopularProducts() {
                         : "bg-[rgb(10,173,10)] text-white border-green-600 focus:ring-green-300 hover:text-white hover:bg-[rgb(0,140,0)] hover:border-[rgb(0,140,0)]"
                     }`}
                     onClick={(e) => {
-                      if (product.stock === 0) return; // evita agregar agostado
+                      if (product.stock === 0) return;
 
                       e.stopPropagation();
                       e.preventDefault();

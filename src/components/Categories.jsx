@@ -4,13 +4,14 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./categories.css";
-import { useNavigate } from "react-router-dom";
 import { useCategory } from "../context/category.jsx";
+import { useCategoryClick } from "../hooks/FindCategory.jsx";
 
 export function Categories({ categories, products }) {
-  const { setSelectedCategory, setAllCategories } = useCategory();
-  const navigate = useNavigate();
+  const { setAllCategories } =
+    useCategory();
+
+  const { handleCategoryClick } = useCategoryClick();
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
@@ -19,11 +20,6 @@ export function Categories({ categories, products }) {
       setAllCategories(categories.map((cat) => cat.slug));
     }
   }, [categories, setAllCategories]);
-
-  const handleCategoryClick = (slug) => {
-    setSelectedCategory(slug);
-    navigate("/products");
-  };
   return (
     <section className="container mx-auto pt-7">
       <div className="flex items-center justify-between mb-3">
@@ -91,13 +87,15 @@ export function Categories({ categories, products }) {
                 onClick={() => handleCategoryClick(category.slug)}
                 className="cursor-pointer w-full"
               >
-                <div className="
+                <div
+                  className="
                     mt-1 rounded-lg border border-gray-300 
                     transition-all duration-200 ease-in-out 
                     hover:border-green-600 
                     hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]
                     hover:-translate-y-px
-                  ">
+                  "
+                >
                   <img
                     src={
                       productInCategory

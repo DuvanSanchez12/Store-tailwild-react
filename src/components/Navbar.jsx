@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import { useFilters } from "../hooks/useFilters.js";
 import { Cart } from "./cart.jsx";
 import {
   HeartIcon,
@@ -10,21 +8,11 @@ import {
 } from "./icons.jsx";
 import "../index.css";
 import { CATEGORY } from "./Consts.js";
-import { useCategory } from "../context/category.jsx";
+import { useCategoryClick } from "../hooks/FindCategory.jsx";
 
 export function Navbar() {
-  const { setFilters } = useFilters();
-  const navigate = useNavigate();
-  const { setSelectedCategory } = useCategory();
-  const handleCategoryClick = (slugArray, name) => {
-    setSelectedCategory(name);
-    setFilters((prev) => ({
-      ...prev,
-      categories: slugArray,
-    }));
+  const { handleCategoryClickCategory } = useCategoryClick();
 
-    navigate(`/products?category=${name}`);
-  };
   return (
     <header className="antialiased text-gray-200 border-b">
       <div className="bg-gray-100 py-1  ">
@@ -124,26 +112,26 @@ export function Navbar() {
             </a>
             <div className="absolute left-0 mt-2 w-60 bg-white shadow-xl rounded-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <ul className="py-2 text-gray-700 font-medium">
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Ropa_y_moda,"Ropa_y_moda")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   Ropa y Moda
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Tecnología,"Tecnología")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   Tecnología
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Muebles & Hogar
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Belleza_y_cuidado_personal,"Belleza_y_cuidado_personal")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Belleza y cuidado personal
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Frutas y Verduras
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Hogar_y_decoración,"Hogar_y_decoración")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Hogar y decoración
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Snacks y Dulces
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Supermercado,"Supermercado")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Supermercado
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Electrodomésticos
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Deportes,"Deportes")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Deportes
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Accesorios
+                <li onClick={() => handleCategoryClickCategory(CATEGORY.Vehículos,"Vehículos")} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Vehículos
                 </li>
               </ul>
             </div>
@@ -152,49 +140,49 @@ export function Navbar() {
             Inicio
           </a>
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Ropa_y_moda,"Ropa_y_moda")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Ropa_y_moda,"Ropa_y_moda")}
             className="hover:text-green-600 cursor-pointer"
           >
             Ropa y moda
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Tecnología,"Tecnología")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Tecnología,"Tecnología")}
             className="hover:text-green-600 cursor-pointer"
           >
             Tecnología
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Belleza_y_cuidado_personal,"Belleza_y_cuidado_personal")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Belleza_y_cuidado_personal,"Belleza_y_cuidado_personal")}
             className="hover:text-green-600 cursor-pointer"
           >
             Belleza y cuidado personal
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Hogar_y_decoración,"Hogar_y_decoración")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Hogar_y_decoración,"Hogar_y_decoración")}
             className="hover:text-green-600 cursor-pointer"
           >
             Hogar y decoración
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Supermercado,"Supermercado")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Supermercado,"Supermercado")}
             className="hover:text-green-600 cursor-pointer"
           >
             Supermercado
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Deportes,"Deportes")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Deportes,"Deportes")}
             className="hover:text-green-600 cursor-pointer"
           >
             Deportes
           </a>
 
           <a
-            onClick={() => handleCategoryClick(CATEGORY.Vehículos,"Vehículos")}
+            onClick={() => handleCategoryClickCategory(CATEGORY.Vehículos,"Vehículos")}
             className="hover:text-green-600 cursor-pointer"
           >
             Vehículos

@@ -1,9 +1,11 @@
+
 import { ArrowIcon, CartIcon, TrashIcon, XIcon } from "./icons.jsx";
 import "./Cart.css";
 import { useCart } from "../hooks/useCart.js";
 import { QuantitySelector } from "./Quantity.jsx";
 import { useCartContext } from "../context/cartModal.jsx";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CartItem({
   thumbnail,
@@ -16,6 +18,7 @@ function CartItem({
 }) {
   const quantity = product.quantity || 1;
   const totalProduct = (price - price * (discountPercentage / 100)) * quantity;
+  
 
   return (
     <li className="py-3 border-t">
@@ -72,6 +75,7 @@ function CartItem({
 export function Cart() {
   const { cart, clearCart, addToCart, RemoveFromCart } = useCart();
   const { isOpen, openCart, closeCart } = useCartContext();
+  const navigate = useNavigate();
   const subtotal = cart.reduce(
     (acc, product) => acc + product.price * (product.quantity || 1),
     0
@@ -96,7 +100,7 @@ export function Cart() {
         className="relative cursor-pointer text-gray-500 hover:text-green-600"
       >
         <CartIcon />
-        <span className="absolute top-0 -mt-1 left-full rounded-full h-5 w-5 -ml-2 bg-[rgb(10,173,10)] text-white text-center font-semibold text-sm">
+        <span className="absolute  top-0 -mt-1.5  left-full rounded-full h-6 w-6 -ml-2 bg-[rgb(10,173,10)] text-white text-center font-semibold text-sm">
           {cart?.length || 0}
         </span>
       </button>
@@ -160,7 +164,7 @@ export function Cart() {
             >
               <TrashIcon width={18} height={18} /> Vaciar carrito
             </button>
-            <button className="inline-flex cursor-pointer items-center px-4 gap-x-2 py-1.5 btn-color text-white font-medium border rounded-lg border-green-600 active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition">
+            <button onClick={() => {closeCart(); navigate("/payment");}} className="inline-flex cursor-pointer items-center px-4 gap-x-2 py-1.5 bg-[rgb(10,173,10)] text-white font-medium border rounded-lg border-green-600 hover:bg-[rgb(0,140,0)] hover:border-[rgb(0,140,0)] active:bg-green-700 active:border-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition">
               Ir a pagar <ArrowIcon />
             </button>
           </div>

@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import "./Products.css";
 import {
   HeartMinusIcon,
   MinusIcon,
@@ -26,7 +25,7 @@ export default function Products() {
   return (
     <section className="container mx-auto pt-7 pb-10">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="products-title font-bold text-2xl text-gray-800">
+        <h2 className="fontMain font-bold text-2xl text-gray-800 pb-2">
           Productos disponibles
         </h2>
       </div>

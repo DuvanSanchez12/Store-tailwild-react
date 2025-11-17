@@ -16,7 +16,6 @@ export function Filters() {
 
     if (!urlSlug) return;
 
-    // Encontrar categoría a la que pertenece este slug
     for (const category in CATEGORY) {
         if (CATEGORY[category].includes(urlSlug)) {
         setSelectedCategory(category);
@@ -58,13 +57,11 @@ export function Filters() {
 
   return (
     <section className="container mx-auto mt-8 mb-4 px-4">
-      <h2 className="font-bold fontMain text-center text-2xl mb-4">
+      <h2 className="fontMain font-bold text-center text-2xl text-gray-800 pb-2">
         {selectedCategory
           ? selectedCategory.replace(/_/g, " ")
           : "Selecciona una categoría arriba"}
       </h2>
-
-      {/* CONTENEDOR 100% CENTRADO */}
       <div className="flex justify-center mt-6">
         <div
           className="grid justify-center gap-6"

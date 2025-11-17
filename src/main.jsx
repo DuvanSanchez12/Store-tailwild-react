@@ -13,6 +13,7 @@ import { CategoryProvider } from "./context/category.jsx";
 
 const HomePage = lazy(() => import("./routes/Home.jsx"));
 const Products = lazy(() => import("./routes/products.jsx"));
+const Payment = lazy(() => import("./routes/payment.jsx"))
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,16 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "payment",
+        element: (
+          <Suspense>
+            <>
+            <Payment />
+            </>
+          </Suspense>
+        )
+      }
     ],
   },
 ]);

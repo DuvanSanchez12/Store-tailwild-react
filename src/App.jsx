@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -22,6 +23,7 @@ export default function App() {
     <>
       <Navbar />
       <Outlet context={{ products, categories }} />
+      <Footer />
     </>
   );
 }
